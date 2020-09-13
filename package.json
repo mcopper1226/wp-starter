@@ -1,11 +1,8 @@
 {
-    "name": "wp-starter",
+    "name": "wp-boilerplate",
     "version": "1.0.0",
     "description": "A sweet little WordPress starter kit.",
     "main": "index.js",
-    "engines": {
-      "node": ">=8 <10"
-    },
     "scripts": {
       "preinstall": "composer install",
       "install:wp": "node scripts/install.js",
