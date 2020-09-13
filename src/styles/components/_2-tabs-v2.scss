@@ -1,0 +1,13 @@
+.tabs-v2__panel {
+  padding: var(--space-md) 0;
+}
+
+.js {
+  .tabs-v2__panel {
+    display: none;
+  }
+
+  .tabs-v2__panel--selected {
+    display: block;
+  }
+}

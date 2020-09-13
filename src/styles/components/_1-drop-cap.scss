@@ -1,0 +1,19 @@
+:root {
+  --drop-cap-lines: 2; // number of lines occupied by the first letter
+}
+
+.drop-cap::first-letter {
+  float: left;
+  line-height: 1;
+  font-size: calc(1em * var(--drop-cap-lines) * 1.6) !important;
+  padding: 0 0.125em 0 0;
+  text-transform: uppercase;
+  color: var(--color-contrast-higher);
+}
+
+.text-component .drop-cap::first-letter {
+  font-size: calc(
+    1em * var(--drop-cap-lines) * var(--body-line-height) *
+      var(--line-height-multiplier)
+  );
+}

@@ -1,0 +1,36 @@
+.thumbnail-list__item {
+  &:first-of-type {
+    padding-top: 0 !important;
+  }
+  &:last-of-type {
+    border-bottom: none !important;
+  }
+}
+
+.video-popup-image {
+  position: relative;
+  .play-btn {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+    left: 50%;
+    margin-left: -30px;
+    fill: rgba(255, 255, 255, 0.6);
+    transition: fill 0.25s ease-in-out;
+    &:hover {
+      fill: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.duration {
+  position: relative;
+  color: white;
+  font-weight: 400;
+  font-family: var(--font-primary);
+  letter-spacing: 0;
+  font-size: 12px;
+  padding-left: 10px;
+}

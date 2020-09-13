@@ -1,0 +1,36 @@
+.icon {
+  // make sure to include the font-family declaration if you are using an icon font
+  // font-family: 'fontName';
+}
+
+.icon-fill-yellow {
+  fill: var(--color-yellow);
+}
+
+.icon-fill-pink {
+  fill: var(--color-pink);
+}
+
+.icon-fill-teal {
+  fill: var(--color-teal);
+}
+
+.icon-fill-green {
+  fill: var(--color-green);
+}
+
+.icon-fill-accent {
+  fill: var(--color-accent);
+}
+
+.icon-fill-primary {
+  fill: var(--color-primary);
+}
+
+.icon-fill-white {
+  fill: white;
+}
+
+.btn__play {
+  background-image: url(#{$assets}/icons-03.svg);
+}

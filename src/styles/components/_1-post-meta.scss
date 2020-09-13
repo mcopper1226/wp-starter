@@ -1,0 +1,25 @@
+.post-meta {
+  position: sticky;
+  top: 20px;
+}
+
+.post-meta__tag-link {
+  font-size: 14px;
+  padding: 2px 5px;
+  text-decoration: none;
+  background: var(--color-contrast-low);
+  margin-top: 4px;
+  margin-right: 4px;
+  display: inline-block;
+  color: var(--color-primary);
+}
+
+.post-meta__headshot {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

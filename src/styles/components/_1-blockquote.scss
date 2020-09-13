@@ -1,0 +1,32 @@
+blockquote {
+  float: none;
+  font-family: 'bodoni-urw';
+
+  line-height: 2;
+
+  p {
+    font-size: 1.2em;
+    display: inline;
+    background-image: linear-gradient(
+      transparent 50%,
+      hsla(
+          var(--color-primary-h),
+          var(--color-primary-s),
+          var(--color-primary-l),
+          0.2
+        )
+        50%
+    );
+    line-height: 1;
+    font-weight: 600;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  blockquote {
+    float: right;
+    margin-right: -4vw;
+    margin-left: 20px;
+    width: 400px;
+  }
+}

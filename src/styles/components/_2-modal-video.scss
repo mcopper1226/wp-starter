@@ -1,0 +1,41 @@
+/* -------------------------------- 
+
+File#: _2_modal-video
+Title: Modal Video
+Descr: A modal window used to display a responsive video
+
+-------------------------------- */
+
+.modal-video {
+}
+
+.modal-video__content {
+  width: calc(100% - 2 * var(--component-padding));
+  max-height: calc(100vh - var(--component-padding));
+  overflow: auto;
+  opacity: 0;
+}
+
+.modal-video__loader {
+  // loader icon - visible while the iframe is being loaded
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  .icon {
+    color: var(--color-contrast-low);
+    display: block;
+  }
+}
+
+.modal-video--loaded {
+  // iframe content has been loaded
+  .modal-video__content {
+    opacity: 1;
+  }
+
+  .modal-video__loader {
+    display: none;
+  }
+}

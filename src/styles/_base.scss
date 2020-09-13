@@ -1,0 +1,26 @@
+@import 'base/reset';
+@import 'base/mixins';
+@import 'base/colors';
+@import 'base/breakpoints';
+@import 'base/spacing';
+@import 'base/grid-layout';
+@import 'base/shared-styles';
+@import 'base/typography';
+@import 'base/icons';
+@import 'base/buttons';
+@import 'base/forms';
+@import 'base/z-index';
+@import 'base/visibility';
+@import 'base/accessibility';
+@import 'base/util';
+@import 'base/background';
+@import 'base/media';
+
+.transition-fade {
+  transition: 0.4s;
+  opacity: 1;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
+}

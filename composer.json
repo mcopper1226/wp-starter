@@ -1,0 +1,43 @@
+{
+    "name": "wp-starter",
+    "description": "A WordPress starter kit.",
+    "type": "project",
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "https://wpackagist.org"
+      },
+      {
+        "type": "package",
+        "package": {
+          "name": "advanced-custom-fields/advanced-custom-fields-pro",
+          "version": "5.8.4",
+          "type": "wordpress-plugin",
+          "dist": {
+            "type": "zip",
+            "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=b3JkZXJfaWQ9MTA3ODg0fHR5cGU9ZGV2ZWxvcGVyfGRhdGU9MjAxNy0wNi0wNyAwMDowNjo0Ng==&t={%version}"
+          },
+          "require": {
+            "composer/installers": "^1.4",
+            "ffraenz/private-composer-installer": "^2.0"
+          }
+        }
+      }
+    ],
+    "require": {
+      "wp-cli/wp-cli": "^1.4",
+      "johnpbloch/wordpress": "*",
+      "advanced-custom-fields/advanced-custom-fields-pro": "^5.0.0",
+      "wp-premium/gravityforms": "^2.4.10"
+    },
+    "extra": {
+      "installer-paths": {
+        "web/app/plugins/{$name}/": [
+          "advanced-custom-fields/advanced-custom-fields-pro",
+          "wp-premium/gravityforms"
+        ]
+      },
+      "wordpress-install-dir": "web/wp"
+    }
+  }
+  

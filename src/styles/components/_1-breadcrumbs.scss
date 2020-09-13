@@ -1,0 +1,33 @@
+/* -------------------------------- 
+
+File#: _1_breadcrumbs
+
+-------------------------------- */
+
+.breadcrumbs {
+  font-size: var(--text-sm);
+}
+
+.breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: calc(-1 * var(--space-xxs));
+}
+
+.breadcrumbs__item {
+  display: inline-block; // flex fallback
+  margin-bottom: var(--space-xxs);
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumbs__separator {
+  display: inline-block; // flex fallback
+  margin: 0 var(--space-xxs);
+  color: var(--color-contrast-medium);
+
+  .icon {
+    display: block;
+    color: inherit;
+  }
+}

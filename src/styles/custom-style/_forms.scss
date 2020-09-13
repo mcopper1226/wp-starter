@@ -1,0 +1,109 @@
+:root {
+  --form-control-padding-x: var(--space-sm);
+  --form-control-padding-y: var(--space-xs);
+  --form-control-radius: 0.25em;
+}
+
+.form-control {
+  // basic form element style
+  border: 2px solid var(--color-contrast-low);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px alpha(var(--color-primary), 0.2);
+  }
+}
+
+.form-control[aria-invalid="true"] {
+  border-color: var(--color-error);
+
+  &:focus {
+    box-shadow: 0 0 0 3px alpha(var(--color-error), 0.2);
+  }
+}
+
+.form-control[disabled],
+.form-control[readonly] {
+  cursor: not-allowed;
+}
+
+.form-legend {
+}
+
+.form-label {
+  font-size: var(--text-sm);
+}
+
+.form-error-msg {
+  background-color: alpha(var(--color-error), 0.2);
+  color: inherit;
+  border-radius: var(--radius-md);
+  padding: var(--space-xs);
+}
+
+.gform_wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  form {
+    display: flex;
+  }
+  .gform_body {
+    margin: 0;
+    padding: 0;
+    flex: 1 0 auto;
+    width: auto !important;
+    margin-right: 5px;
+    ul.gform_fields {
+    }
+    li.gfield {
+      padding: 0 !important;
+      margin-top: 0;
+    }
+    .gfield_label {
+      display: none;
+    }
+    div.ginput_container {
+      margin: 0 !important;
+    }
+    input[type="email"],
+    input[type="text"] {
+      background-color: var(--color-bg, #f2f2f2);
+      padding-top: var(--form-control-padding-y, 0.5em) !important;
+      padding-bottom: var(--form-control-padding-y, 0.5em) !important;
+      padding-left: var(--form-control-padding-x, 0.75em) !important;
+      padding-right: var(--form-control-padding-x, 0.75em) !important;
+      border-radius: var(--form-control-radius, 0.25em) !important;
+      border: 2px solid var(--color-contrast-low) !important;
+    }
+  }
+
+  .gform_footer {
+    margin: 0;
+    padding: 0;
+    flex-basis: auto;
+    width: auto !important;
+    .gform_button {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      text-decoration: none;
+      height: 100%;
+      font-size: var(--btn-font-size, 1em);
+      padding-top: var(--btn-padding-y, 0.5em);
+      padding-bottom: var(--btn-padding-y, 0.5em);
+      padding-left: var(--btn-padding-x, 0.75em);
+      padding-right: var(--btn-padding-x, 0.75em);
+      border-radius: var(--btn-radius, 0.25em);
+      background-color: var(--color-primary, #2a6df4);
+      color: var(--color-white, white);
+      margin: 0 !important;
+    }
+  }
+}
+
+.select select {
+  width: 100%;
+}

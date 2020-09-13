@@ -1,0 +1,63 @@
+.features-v3__text {
+  padding-top: var(--space-xxl);
+  padding-bottom: calc(var(--space-xl) * 2);
+  background-color: var(--color-contrast-lower);
+}
+
+.features-v3__cards {
+  margin-top: calc(var(--space-xl) * -1);
+}
+
+@each $mq in "sm" "md" "lg" {
+  // define the feature--media-outset@{mq} style at different media queries
+  .feature--media-outset\@#{$mq} {
+    overflow: hidden;
+  }
+
+  @include breakpoint(#{$mq}) {
+    .feature--media-outset\@#{$mq} .feature__grid {
+      align-items: stretch;
+    }
+
+    .feature--media-outset\@#{$mq} .feature__item--media {
+      position: relative;
+      height: 100%;
+
+      > * {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        max-width: none;
+        width: auto;
+      }
+    }
+  }
+
+  // --invert -> invert order of feature items at specific breakpoints
+  @include breakpoint(#{$mq}) {
+    .feature--media-outset\@#{$mq}.feature--invert\@#{$mq}
+      .feature__grid
+      > *:last-child
+      .feature__item--media {
+      > * {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+
+  // auto-invert features in a grid
+  @include breakpoint(sm) {
+    .feature-group--auto-invert\@#{$mq} {
+      .feature--media-outset\@#{$mq}:nth-child(2n) {
+        .feature__grid > *:last-child .feature__item--media {
+          > * {
+            left: auto;
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+}

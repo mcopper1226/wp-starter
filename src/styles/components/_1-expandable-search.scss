@@ -1,0 +1,67 @@
+:root {
+  --expandable-search-size: 1em; // control the size of all elements
+}
+
+.expandable-search {
+  position: relative;
+  display: inline-block;
+  font-size: var(--expandable-search-size);
+
+  .form-label {
+    // 1st click is on label -> to trigger input focus
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    user-select: none;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .form-control {
+    width: 2.2em;
+    height: 2.2em;
+    padding: 0;
+    color: transparent;
+    overflow: hidden;
+    // border-radius: 50em; // optional -> rounded corners
+    transition: width 0.3s var(--ease-out);
+
+    &:focus,
+    &.form-control--has-content {
+      width: 10em; // max width
+      padding: 0 2.2em 0 var(--space-xs);
+      color: var(--color-contrast-high);
+
+      + .form-label {
+        // label not clickable when input:focus
+        clip: rect(1px, 1px, 1px, 1px);
+        clip-path: inset(50%);
+        width: 1px;
+        height: 1px;
+      }
+    }
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+  }
+}
+
+.expandable-search__btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.2em;
+  height: 2.2em;
+  z-index: 1;
+}

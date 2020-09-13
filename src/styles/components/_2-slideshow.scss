@@ -1,0 +1,335 @@
+// slide
+.slideshow__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 280px; // slideshow height
+  background-color: var(--color-bg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include breakpoint(md) {
+    height: 400px;
+  }
+
+  @include breakpoint(lg) {
+    height: 480px;
+  }
+}
+
+// use this variation if you want to set the ratio of the slides to 16/9 (e.g., if you have an image slider)
+.slideshow--ratio-16\:9 .slideshow__item {
+  height: 0;
+  padding-bottom: 56.25%; // 16:9 aspect ratio
+}
+
+// slideshow basic style
+.js {
+  .slideshow {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .slideshow__content {
+    overflow: hidden;
+  }
+
+  .slideshow__item {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .slideshow__item--selected {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+// fade-in animation
+.js {
+  .slideshow--transition-fade .slideshow__item {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0s 0.3s, visibility 0s 0.3s;
+  }
+
+  .slideshow--transition-fade .slideshow__item--selected {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+}
+
+// slide-in animation
+.js {
+  .slideshow--transition-slide .slideshow__item {
+    animation-duration: 0.4s;
+    animation-timing-function: var(--ease-out);
+
+    > * {
+      // hide content of not-visible items so that they are not focusable
+      visibility: hidden;
+    }
+  }
+
+  .slideshow--transition-slide .slideshow__item--selected > * {
+    // show content of selected item
+    visibility: visible;
+  }
+
+  .slideshow--transition-slide .slideshow__item--slide-in-left {
+    // visible item - enter from left to right
+    animation-name: slide-in-left;
+  }
+
+  .slideshow--transition-slide .slideshow__item--slide-in-right {
+    // visible item - enter from right to left
+    animation-name: slide-in-right;
+  }
+
+  .slideshow--transition-slide .slideshow__item--slide-out-left {
+    // leaving item - leave from left to right
+    animation-name: slide-out-left;
+  }
+
+  .slideshow--transition-slide .slideshow__item--slide-out-right {
+    // leaving item - leave from right to left
+    animation-name: slide-out-right;
+  }
+
+  .slideshow--transition-slide .slideshow__item--slide-out-left,
+  .slideshow--transition-slide .slideshow__item--slide-out-right {
+    z-index: 2;
+
+    &.slideshow__item--selected {
+      z-index: 3; // fix bug on browsers not supporting CSS animations
+    }
+
+    > * {
+      visibility: visible;
+    }
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slide-out-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+// touch swipe enabled
+.js .slideshow[data-swipe="on"] .slideshow__content {
+  user-select: none;
+
+  img {
+    pointer-events: none;
+  }
+}
+
+// slideshow arrow controls
+.slideshow__control {
+  display: none;
+}
+
+.js {
+  .slideshow[data-swipe="on"] .slideshow__control {
+    display: none; // hide arrows on mobile if swipe is enabled
+  }
+
+  .slideshow__control {
+    display: block;
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:first-of-type {
+      left: var(--space-xs);
+    }
+
+    &:last-of-type {
+      right: var(--space-xs);
+    }
+
+    button,
+    .icon {
+      display: block;
+    }
+
+    button {
+      background-color: alpha(var(--color-black), 0.75); // IE fallback
+      height: 48px;
+      width: 24px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+
+      &:hover {
+        background-color: alpha(var(--color-contrast-higher), 0.85);
+
+        .icon {
+          color: var(--color-bg);
+        }
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      margin: 0 auto;
+      transition: color 0.2s;
+      color: var(--color-white); // IE fallback
+    }
+
+    @supports (grid-area: auto) {
+      button {
+        background-color: transparent;
+      }
+
+      .icon {
+        color: var(--color-contrast-higher);
+      }
+    }
+  }
+
+  @include breakpoint(md) {
+    .slideshow[data-swipe="on"] .slideshow__control {
+      display: block; // show arrow controls
+    }
+
+    .slideshow__control {
+      button {
+        height: 64px;
+        width: 32px;
+      }
+
+      .icon {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}
+
+// slideshow navigation
+.slideshow__navigation {
+  // created in JS
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.slideshow__nav-item {
+  display: inline-block; // flex fallback
+  margin: 0 var(--space-xxxs);
+
+  button {
+    // dot
+    display: block;
+    position: relative;
+    font-size: 8px; // dot size
+    color: var(--color-contrast-high); // dot color
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: currentColor;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &::before {
+      // focus circle
+      content: "";
+      position: absolute;
+      top: calc(50% - 0.5em);
+      left: calc(50% - 0.5em);
+      height: 1em;
+      width: 1em;
+      font-size: 14px;
+      border-radius: inherit;
+      border: 1px solid var(--color-contrast-high);
+      opacity: 0;
+      transform: scale(0);
+      transition: 0.3s;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::before {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.slideshow__nav-item--selected button {
+  opacity: 1;
+}
+
+@include breakpoint(md) {
+  .slideshow__navigation {
+    height: 40px;
+  }
+
+  .slideshow__nav-item {
+    button {
+      font-size: 10px; // dot size
+
+      &::before {
+        // focus circle
+        font-size: 16px;
+      }
+    }
+  }
+}
