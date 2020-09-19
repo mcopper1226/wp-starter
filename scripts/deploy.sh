@@ -24,9 +24,8 @@ then
 fi
 
 output "Removing old deploy directory"
-rm -rf deploy
-
-mkdir deploy
+rm -rf ../deploy/wp-content/plugins
+rm -rf ../deploy/wp-content/themes
 
 # Make sure all plugins are installed
 #composer update --quiet
@@ -37,13 +36,13 @@ output "Dependencies installed"
 npm run build -s
 
 # Copy to deploy
-cp -a web/app/plugins deploy/plugins
-cp -a web/app/themes deploy/themes
+cp -a web/app/plugins ../deploy/wp-content/plugins
+cp -a web/app/themes ../deploy/wp-content/themes
 
 if [ ! -z "$1" ]
   then
     output "Changing asset paths from $assetPath to $1 in style.css"
-    sed -i '' 's#'$assetPath'#'$1'#g' deploy/themes/${theme}/style.css
+    sed -i '' 's#'$assetPath'#'$1'#g' ../deploy/wp-content/themes/${theme}/style.css
 fi
 
 output "Done"
