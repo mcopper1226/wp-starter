@@ -19,6 +19,9 @@ Redirect 301 /wp-admin /wp/wp-admin
 Redirect 301 /wp-login.php /wp/wp-login.php
 
 # BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /

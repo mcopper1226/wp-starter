@@ -1,0 +1,4 @@
+name: wp-boilerplate
+recipe: wordpress
+config:
+  webroot: .

@@ -6,7 +6,7 @@ $databaseUrl = getenv('DATABASE_URL') ? getenv('DATABASE_URL') : getenv('JAWSDB_
 
 // default for dev
 if (empty($databaseUrl)) {
-  $databaseUrl = 'mysql://root:@127.0.0.1:3306/experience.mcintire.virginia.edu';
+  $databaseUrl = 'mysql://root:@127.0.0.1:32809/experience.mcintire.virginia.edu';
 }
 
 $url = parse_url($databaseUrl);
@@ -15,10 +15,10 @@ if (isset($url['port']) && $url['port'] !== '') {
   $port = ':' . $url['port'];
 }
 
-define('DB_NAME', trim($url['path'], '/'));
-define('DB_USER', 'root');
-define('DB_PASSWORD', 'root');
-define('DB_HOST', $url['host'] . $port);
+define('DB_NAME', 'wordpress');
+define('DB_USER', 'wordpress');
+define('DB_PASSWORD', 'wordpress');
+define('DB_HOST', '127.0.0.1:32809');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 

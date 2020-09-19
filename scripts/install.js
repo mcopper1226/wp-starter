@@ -13,7 +13,7 @@ const {
   WP_THEME_NAME
 } = process.env;
 
-const url = WP_URL || 'http://localhost:8080/';
+const url = WP_URL || 'http://localhost:32808';
 const title = WP_TITLE || 'WP Boilerplate';
 const user = WP_ADMIN_USER || 'admin';
 const email = WP_ADMIN_EMAIL || 'web@comm.virginia.edu';
